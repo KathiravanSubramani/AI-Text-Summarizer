@@ -1,6 +1,5 @@
 [build]
-builder = "NIXPACKS"
-buildCommand = "dotnet restore && dotnet publish -c Release -o out"
+command = "dotnet publish -c Release -o out"
 
-[deploy]
-start = "dotnet out/AITextSummarizer.dll"
+[start]
+command = "dotnet out/AITextSummarizer.dll"

@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "I5HBbUtvGRIn93EpJ0oaaabk9CziNTyQNiooh33ezXE=",
+  "Source": "AITextSummarizer",
+  "BasePath": "_content/AITextSummarizer",
+  "Mode": "Default",
+  "ManifestType": "Publish",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}

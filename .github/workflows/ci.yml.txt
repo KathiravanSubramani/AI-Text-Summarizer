@@ -1,0 +1,52 @@
+name: CI - Build .NET 8 API
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup .NET 8 SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore NuGet packages
+        working-directory: ./
+        run: dotnet restore
+
+      - name: Build the solution (Release)
+        working-directory: ./
+        run: dotnet build -c Release --no-restore
+
+      - name: Publish (create out folder)
+        working-directory: ./
+        run: dotnet publish -c Release -o out --no-restore
+
+      - name: Upload published artifact (optional)
+        uses: actions/upload-artifact@v4
+        with:
+          name: published-out
+          path: out/
+
+  # optional test job stub - enable if you add tests
+  # tests:
+  #   runs-on: ubuntu-latest
+  #   needs: build
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: actions/setup-dotnet@v3
+  #       with:
+  #         dotnet-version: '8.0.x'
+  #     - run: dotnet test ./YourTestProject.csproj -c Release
