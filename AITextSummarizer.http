@@ -1,0 +1,6 @@
+@AITextSummarizer_HostAddress = http://localhost:5244
+
+GET {{AITextSummarizer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
